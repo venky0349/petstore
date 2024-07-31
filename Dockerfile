@@ -14,7 +14,7 @@
     - name: Log in to Docker Hub
       community.docker.docker_login:
         registry_url: https://index.docker.io/v1/
-        username: sevenajay
+        username: 123devops
         password: <docker pat>
     - name: Push image
       command: docker push 123devops/petstore:latest
