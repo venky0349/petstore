@@ -24,5 +24,4 @@
     - name: Push image
       command: docker push 123devops/petstore:latest
 
-    - name: Run container
-      command: docker run -d --name pet1 -p 8081:8080 123devops/petstore:latest
+
