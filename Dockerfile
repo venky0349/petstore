@@ -1,22 +1,21 @@
-- name: docker build and push
-  hosts: local  # Replace with the hostname or IP address of your target server
-  become: yes  # Run tasks with sudo privileges
-  tasks:
-    - name: Update apt package cache
-      apt:
-        update_cache: yes
-    - name: Build Docker Image
-      command: docker build -t petstore .
-      args:
-        chdir: /var/lib/jenkins/workspace/petshop-ansible-docker-k8s
-    - name: tag image
-      command: docker tag petstore:latest 123devops/petstore:latest
-    - name: Log in to Docker Hub
-      community.docker.docker_login:
-        registry_url: https://index.docker.io/v1/
-        username: 123devops
-        password: dckr_pat_bRjSRimIcXcBX8dVGtujp0ccFj0
-    - name: Push image
-      command: docker push 123devops/petstore:latest
-    - name: Run container
-      command: docker run -d --name pet1 -p 8081:8080 123devops/petstore:latest
+#
+#    Copyright 2010-2023 the original author or authors.
+#
+#    Licensed under the Apache License, Version 2.0 (the "License");
+#    you may not use this file except in compliance with the License.
+#    You may obtain a copy of the License at
+#
+#       https://www.apache.org/licenses/LICENSE-2.0
+#
+#    Unless required by applicable law or agreed to in writing, software
+#    distributed under the License is distributed on an "AS IS" BASIS,
+#    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#    See the License for the specific language governing permissions and
+#    limitations under the License.
+#
+
+FROM openjdk:17.0.2
+COPY . /usr/src/myapp
+WORKDIR /usr/src/myapp
+RUN ./mvnw clean package
+CMD ./mvnw cargo:run -P tomcat90
