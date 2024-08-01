@@ -8,7 +8,7 @@
     - name: Build Docker Image
       command: docker build -t petstore .
       args:
-        chdir: /var/lib/jenkins/workspace/petstore
+        chdir: /var/lib/jenkins/workspace/petshop-ansible-docker-k8s
     - name: tag image
       command: docker tag petstore:latest 123devops/petstore:latest
     - name: Log in to Docker Hub
