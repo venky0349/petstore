@@ -15,7 +15,7 @@
       community.docker.docker_login:
         registry_url: https://index.docker.io/v1/
         username: 123devops
-        password: <docker pat>
+        password: dckr_pat_bRjSRimIcXcBX8dVGtujp0ccFj0
     - name: Push image
       command: docker push 123devops/petstore:latest
     - name: Run container
